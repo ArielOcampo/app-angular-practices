@@ -1,4 +1,4 @@
-# HeroesApp
+# Busqueda de personajes de DC comics
 
 ## Dev
 
