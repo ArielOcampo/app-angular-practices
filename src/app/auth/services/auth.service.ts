@@ -5,13 +5,14 @@ import { environments } from '../../../environments/environments';
 import { User } from '../interfaces/user.interface';
 
 import { Observable, catchError, map, of, pipe, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private baseUrl = environments.baseUrl;
 
   private user?: User;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   get currentUser(): User | undefined {
     if (!this.user) return undefined;
@@ -39,5 +40,6 @@ export class AuthService {
   logout() {
     this.user = undefined;
     localStorage.clear();
+    this.router.navigateByUrl('auth');
   }
 }
